@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Konda Manisha — AI & ML Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0d0d0f;
+    --paper: #f7f5f0;
+    --accent: #5b4fff;
+    --accent-soft: #ede9ff;
+    --mid: #6b6b7b;
+    --line: #e2dfd8;
+    --white: #ffffff;
+    --mono: 'DM Mono', monospace;
+    --sans: 'Space Grotesk', sans-serif;
+    --serif: 'Playfair Display', serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 4rem;
+    background: rgba(247,245,240,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-logo {
+    font-family: var(--mono); font-size: 0.85rem; letter-spacing: 0.08em;
+    color: var(--accent); font-weight: 500;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.82rem; font-weight: 500; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--mid); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center; gap: 0;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; right: 0; top: 0; bottom: 0; width: 42%;
+    background: var(--accent-soft);
+    z-index: 0;
+  }
+  .hero-text { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem;
+  }
+  .hero-name {
+    font-family: var(--serif); font-size: clamp(3.2rem, 6vw, 5.5rem);
+    line-height: 1.05; font-weight: 700; margin-bottom: 0.3rem;
+  }
+  .hero-name em {
+    font-style: italic; font-weight: 400; color: var(--accent);
+  }
+  .hero-title {
+    font-size: 1.05rem; color: var(--mid); font-weight: 400;
+    margin-bottom: 2.5rem; letter-spacing: 0.01em;
+  }
+  .hero-objective {
+    font-size: 1rem; line-height: 1.7; color: #3a3a48;
+    max-width: 460px; margin-bottom: 3rem;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.78rem 1.8rem; border-radius: 0;
+    font-family: var(--sans); font-size: 0.85rem; font-weight: 600;
+    letter-spacing: 0.04em; text-decoration: none; cursor: pointer;
+    border: 2px solid var(--accent); transition: all 0.2s;
+  }
+  .btn-primary { background: var(--accent); color: var(--white); }
+  .btn-primary:hover { background: #3d30e8; border-color: #3d30e8; }
+  .btn-outline { background: transparent; color: var(--accent); }
+  .btn-outline:hover { background: var(--accent); color: var(--white); }
+
+  .hero-visual {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 3rem 2rem;
+  }
+  .avatar-ring {
+    width: 220px; height: 220px; border-radius: 50%;
+    border: 3px solid var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; margin-bottom: 2rem;
+    animation: spin-slow 20s linear infinite;
+  }
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .avatar-ring::before {
+    content: 'AI · ML · PYTHON · HTML · CSS · SQL · AI · ML · PYTHON · HTML · CSS · SQL · ';
+    position: absolute; inset: -18px;
+    font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em;
+    color: var(--accent); opacity: 0.55;
+    border-radius: 50%; width: calc(100% + 36px); height: calc(100% + 36px);
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; line-height: 1; padding: 6px;
+    pointer-events: none;
+  }
+  .avatar-inner {
+    width: 180px; height: 180px; border-radius: 50%;
+    background: var(--accent); display: flex;
+    align-items: center; justify-content: center;
+    font-family: var(--serif); font-size: 3.8rem;
+    color: var(--white); font-weight: 700;
+    animation: spin-slow 20s linear infinite reverse;
+  }
+  .hero-stats {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
+    background: var(--line); width: 100%;
+    border: 1px solid var(--line);
+  }
+  .stat {
+    background: var(--white); padding: 1.2rem 1rem; text-align: center;
+  }
+  .stat-num {
+    display: block; font-size: 1.6rem; font-weight: 700;
+    color: var(--accent); font-family: var(--mono); margin-bottom: 0.2rem;
+  }
+  .stat-label {
+    font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  /* CONTACT STRIP */
+  .contact-strip {
+    background: var(--ink); padding: 1rem 4rem;
+    display: flex; gap: 2.5rem; overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .contact-strip::-webkit-scrollbar { display: none; }
+  .contact-item {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-family: var(--mono); font-size: 0.78rem; color: #aaa;
+    white-space: nowrap; text-decoration: none;
+    transition: color 0.2s;
+  }
+  .contact-item:hover { color: var(--white); }
+  .contact-icon { color: var(--accent); font-size: 1rem; }
+
+  /* SECTIONS */
+  section { padding: 6rem 4rem; }
+  .section-header {
+    display: flex; align-items: baseline; gap: 1.5rem;
+    margin-bottom: 3.5rem; padding-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .section-tag {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--accent);
+    background: var(--accent-soft); padding: 0.3rem 0.7rem;
+    border-radius: 2px;
+  }
+  .section-title {
+    font-family: var(--serif); font-size: 2.2rem; font-weight: 700;
+  }
+
+  /* SKILLS */
+  #skills { background: var(--white); }
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  }
+  .skill-card {
+    border: 1px solid var(--line); padding: 1.8rem 1.5rem;
+    position: relative; overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .skill-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(91,79,255,0.1);
+  }
+  .skill-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--accent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .skill-card:hover::before { transform: scaleX(1); }
+  .skill-category {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--mid); margin-bottom: 0.8rem;
+  }
+  .skill-name {
+    font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;
+  }
+  .skill-level {
+    display: flex; gap: 3px; margin-top: 0.8rem;
+  }
+  .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--line);
+  }
+  .dot.filled { background: var(--accent); }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;
+  }
+  .project-card {
+    background: var(--white); border: 1px solid var(--line);
+    padding: 2rem; position: relative;
+    transition: all 0.25s;
+  }
+  .project-card:hover {
+    border-color: var(--accent);
+    box-shadow: 6px 6px 0 var(--accent);
+    transform: translate(-3px,-3px);
+  }
+  .project-num {
+    font-family: var(--mono); font-size: 0.75rem; color: var(--mid);
+    margin-bottom: 1rem;
+  }
+  .project-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.6rem; }
+  .project-desc { font-size: 0.9rem; color: var(--mid); line-height: 1.6; }
+  .project-tag {
+    display: inline-block; margin-top: 1.2rem;
+    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em;
+    background: var(--accent-soft); color: var(--accent);
+    padding: 0.25rem 0.6rem; border-radius: 2px;
+  }
+
+  /* EXPERIENCE */
+  #experience { background: var(--white); }
+  .timeline {
+    position: relative; padding-left: 2rem;
+    border-left: 2px solid var(--line);
+  }
+  .timeline-item {
+    position: relative; margin-bottom: 3rem; padding-left: 2rem;
+  }
+  .timeline-dot {
+    position: absolute; left: -2.65rem; top: 0.35rem;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--white); border: 2px solid var(--accent);
+  }
+  .timeline-dot.filled { background: var(--accent); }
+  .timeline-date {
+    font-family: var(--mono); font-size: 0.72rem; color: var(--accent);
+    letter-spacing: 0.08em; margin-bottom: 0.5rem;
+  }
+  .timeline-role { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.2rem; }
+  .timeline-org { font-size: 0.88rem; color: var(--mid); margin-bottom: 0.8rem; }
+  .timeline-points { list-style: none; }
+  .timeline-points li {
+    font-size: 0.9rem; color: #3a3a48; line-height: 1.6;
+    padding-left: 1rem; position: relative; margin-bottom: 0.4rem;
+  }
+  .timeline-points li::before {
+    content: '→'; position: absolute; left: 0; color: var(--accent);
+    font-size: 0.8rem;
+  }
+
+  /* EDUCATION */
+  .edu-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+  .edu-card {
+    border: 1px solid var(--line); padding: 1.8rem 1.5rem;
+    background: var(--white); position: relative; overflow: hidden;
+  }
+  .edu-card::after {
+    content: attr(data-cgpa);
+    position: absolute; bottom: -0.5rem; right: 0.8rem;
+    font-family: var(--mono); font-size: 3.5rem; font-weight: 700;
+    color: var(--accent-soft); line-height: 1; pointer-events: none;
+  }
+  .edu-level {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--mid); margin-bottom: 0.6rem;
+  }
+  .edu-degree { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .edu-school { font-size: 0.85rem; color: var(--mid); margin-bottom: 1rem; }
+  .cgpa-badge {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: var(--accent); color: var(--white);
+    font-family: var(--mono); font-size: 0.78rem; font-weight: 500;
+    padding: 0.3rem 0.7rem; border-radius: 2px;
+  }
+
+  /* SOFT SKILLS */
+  #soft { background: var(--ink); }
+  #soft .section-title { color: var(--white); }
+  .soft-grid {
+    display: flex; flex-wrap: wrap; gap: 0.8rem;
+  }
+  .soft-pill {
+    border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.75);
+    font-size: 0.88rem; padding: 0.6rem 1.4rem;
+    transition: all 0.2s; cursor: default;
+    font-family: var(--sans);
+  }
+  .soft-pill:hover {
+    background: var(--accent); border-color: var(--accent);
+    color: var(--white);
+  }
+
+  /* CERTS */
+  .cert-list { display: flex; flex-direction: column; gap: 1rem; }
+  .cert-item {
+    display: flex; align-items: center; gap: 1.5rem;
+    border: 1px solid var(--line); padding: 1.2rem 1.5rem;
+    background: var(--white); transition: all 0.2s;
+  }
+  .cert-item:hover { border-color: var(--accent); }
+  .cert-icon {
+    width: 42px; height: 42px; background: var(--accent-soft);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; flex-shrink: 0;
+  }
+  .cert-name { font-size: 0.95rem; font-weight: 600; }
+  .cert-org { font-size: 0.8rem; color: var(--mid); margin-top: 0.15rem; }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink); color: rgba(255,255,255,0.4);
+    padding: 2rem 4rem; text-align: center;
+    font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.06em;
+  }
+  footer span { color: var(--accent); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+    .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; gap: 3rem; }
+    .hero::after { display: none; }
+    .hero-visual { padding: 0; }
+    section { padding: 4rem 1.5rem; }
+    .contact-strip { padding: 1rem 1.5rem; }
+    .skills-grid, .edu-grid { grid-template-columns: 1fr 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .skills-grid, .edu-grid { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .avatar-ring, .avatar-inner { animation: none; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">KM.portfolio</div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#certifications">Certs</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <p class="hero-eyebrow">👋 Available for entry-level roles</p>
+    <h1 class="hero-name">Konda<br><em>Manisha</em></h1>
+    <p class="hero-title">AI & ML Developer · Python · B.Tech CSE</p>
+    <p class="hero-objective">Motivated B.Tech graduate with foundational knowledge in Python, Artificial Intelligence, and Machine Learning. Ready to apply technical and problem-solving skills to contribute to meaningful organizational growth.</p>
+    <div class="hero-cta">
+      <a href="mailto:manishakonda12@gmail.com" class="btn btn-primary">Get in Touch</a>
+      <a href="https://linkedin.com/in/konda-manisha" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="avatar-ring">
+      <div class="avatar-inner">KM</div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">9.8</span><span class="stat-label">SSC CGPA</span></div>
+      <div class="stat"><span class="stat-num">4</span><span class="stat-label">Projects</span></div>
+      <div class="stat"><span class="stat-num">2</span><span class="stat-label">Certs</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT STRIP -->
+<div class="contact-strip">
+  <a href="mailto:manishakonda12@gmail.com" class="contact-item">
+    <span class="contact-icon">✉</span> manishakonda12@gmail.com
+  </a>
+  <a href="tel:8074310161" class="contact-item">
+    <span class="contact-icon">📞</span> 8074310161
+  </a>
+  <a href="https://linkedin.com/in/konda-manisha" target="_blank" class="contact-item">
+    <span class="contact-icon">in</span> linkedin.com/in/konda-manisha
+  </a>
+  <a href="https://github.com/Kondamanisha" target="_blank" class="contact-item">
+    <span class="contact-icon">⌥</span> github.com/Kondamanisha
+  </a>
+</div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header">
+    <span class="section-tag">Tech</span>
+    <h2 class="section-title">Technical Skills</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-category">Language</div>
+      <div class="skill-name">Python</div>
+      <div class="skill-level">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-category">Markup</div>
+      <div class="skill-name">HTML</div>
+      <div class="skill-level">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-category">Styling</div>
+      <div class="skill-name">CSS</div>
+      <div class="skill-level">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-category">Database</div>
+      <div class="skill-name">SQL</div>
+      <div class="skill-level">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-category">Productivity</div>
+      <div class="skill-name">MS Excel</div>
+      <div class="skill-level">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-category">Productivity</div>
+      <div class="skill-name">MS Word</div>
+      <div class="skill-level">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <span class="section-tag">Work</span>
+    <h2 class="section-title">Projects</h2>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-num">01 / AI</div>
+      <div class="project-title">AI Portfolio Maker</div>
+      <div class="project-desc">Developed an AI-based tool to automatically generate portfolios — turning raw profile data into structured, presentable output with minimal manual effort.</div>
+      <span class="project-tag">Python · AI</span>
+    </div>
+    <div class="project-card">
+      <div class="project-num">02 / ML</div>
+      <div class="project-title">AI Resume Analyzer</div>
+      <div class="project-desc">Built a system that intelligently analyzes resumes and provides actionable suggestions to improve candidate profiles for job applications.</div>
+      <span class="project-tag">Python · NLP</span>
+    </div>
+    <div class="project-card">
+      <div class="project-num">03 / CV</div>
+      <div class="project-title">Driver Drowsiness Detection</div>
+      <div class="project-desc">Implemented a real-time driver fatigue detection system using AI techniques to identify signs of drowsiness and alert the driver proactively.</div>
+      <span class="project-tag">Python · Computer Vision</span>
+    </div>
+    <div class="project-card">
+      <div class="project-num">04 / API</div>
+      <div class="project-title">Live Weather Notifier</div>
+      <div class="project-desc">Created a Python application that fetches and displays real-time weather data, providing users with timely and accurate atmospheric updates.</div>
+      <span class="project-tag">Python · REST API</span>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header">
+    <span class="section-tag">Career</span>
+    <h2 class="section-title">Experience</h2>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot filled"></div>
+      <div class="timeline-date">INTERNSHIP</div>
+      <div class="timeline-role">Python with AI & ML Intern</div>
+      <div class="timeline-org">Next Chapter (Wipro Collaboration)</div>
+      <ul class="timeline-points">
+        <li>Developed AI/ML applications under professional mentorship.</li>
+        <li>Applied machine learning concepts to solve real-world problems.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-header">
+    <span class="section-tag">Academic</span>
+    <h2 class="section-title">Education</h2>
+  </div>
+  <div class="edu-grid">
+    <div class="edu-card" data-cgpa="7.97">
+      <div class="edu-level">Undergraduate</div>
+      <div class="edu-degree">B.Tech in Computer Science & Engineering</div>
+      <div class="edu-school">AAR Mahaveer Engineering College</div>
+      <div class="cgpa-badge">CGPA 7.97</div>
+    </div>
+    <div class="edu-card" data-cgpa="7.98">
+      <div class="edu-level">Intermediate</div>
+      <div class="edu-degree">MPC</div>
+      <div class="edu-school">TSWREIS Junior College, Pedammandadi</div>
+      <div class="cgpa-badge">CGPA 7.98</div>
+    </div>
+    <div class="edu-card" data-cgpa="9.8">
+      <div class="edu-level">Secondary</div>
+      <div class="edu-degree">SSC</div>
+      <div class="edu-school">TSWREIS School, Gopalpet</div>
+      <div class="cgpa-badge">CGPA 9.8</div>
+    </div>
+  </div>
+</section>
+
+<!-- SOFT SKILLS -->
+<section id="soft">
+  <div class="section-header">
+    <span class="section-tag" style="background:rgba(255,255,255,0.1);color:var(--accent)">People</span>
+    <h2 class="section-title">Soft Skills</h2>
+  </div>
+  <div class="soft-grid">
+    <div class="soft-pill">Communication Skills</div>
+    <div class="soft-pill">Teamwork & Collaboration</div>
+    <div class="soft-pill">Problem-Solving</div>
+    <div class="soft-pill">Time Management</div>
+    <div class="soft-pill">Quick Learner</div>
+    <div class="soft-pill">Positive Attitude</div>
+    <div class="soft-pill">Attention to Detail</div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-header">
+    <span class="section-tag">Credentials</span>
+    <h2 class="section-title">Certifications</h2>
+  </div>
+  <div class="cert-list">
+    <div class="cert-item">
+      <div class="cert-icon">🏅</div>
+      <div>
+        <div class="cert-name">Python with AI & ML Internship</div>
+        <div class="cert-org">Next Chapter & Wipro</div>
+      </div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">📜</div>
+      <div>
+        <div class="cert-name">Course Completion — Python, AI & ML</div>
+        <div class="cert-org">Skill India</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  Designed & built for <span>Konda Manisha</span> · manishakonda12@gmail.com · github.com/Kondamanisha
+</footer>
+
+</body>
+</html>
